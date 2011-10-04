@@ -1,0 +1,29 @@
+type permission =
+  [ Get_all <json name="get-all">
+  | Post_all <json name="post-all">
+  ]
+
+type t = {
+  connect_app_sid : string;
+  account_sid : string;
+  permissions : permission list;
+  connect_app_friendly_name : string;
+  ?connect_app_description : string option;
+  ?connect_app_company_name : string option;
+  ?connect_app_homepage_url : string option;
+}
+
+type page = {
+  page : int;
+  num_pages : int;
+  page_size : int;
+  total : int;
+  start : int;
+  end <ocaml name="page_end"> : int;
+  uri <ocaml name="page_uri"> : string;
+  first_page_uri : string;
+  ?previous_page_url : string option;
+  ?next_page_uri : string option;
+  last_page_uri : string;
+  authorized_connect_apps : t list
+}

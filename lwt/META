@@ -1,0 +1,6 @@
+name = "twilio-lwt"
+version = "0.1"
+description = "twilio rest client for lwt"
+requires = "twilio,lwt,netclient"
+archive(byte) = "twilio-lwt.cma"
+archive(native) = "twilio-lwt.cmxa"

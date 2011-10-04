@@ -1,0 +1,10 @@
+type t = {
+  friendly_name : string;
+  phone_number : string;
+  iso_country : string;
+}
+
+type response = {
+  uri : string;
+  available_phone_numbers : t list
+}

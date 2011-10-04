@@ -1,0 +1,5 @@
+<**/*.ml*> : pkg_netclient
+
+<twilio_util.ml> : pkg_ssl,pkg_equeue-ssl
+
+<**/*_j.ml*> : pkg_atd,pkg_biniou,pkg_yojson,pkg_atdgen

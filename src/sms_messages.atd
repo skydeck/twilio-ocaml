@@ -1,0 +1,45 @@
+type direction =
+  [ Incoming <json name="incoming">
+  | Outbound_api <json name="outbound-api">
+  | Outbound_call <json name="outbound-call">
+  | Outbound_reply <json name="outbound-reply">
+  ]
+
+type status =
+  [ Queued <json name="queued">
+  | Sending <json name="sending">
+  | Sent <json name="sent">
+  | Received <json name="received">
+  | Failed <json name="failed">
+  ]
+
+type t = {
+  account_sid : string;
+  api_version : string;
+  body : string;
+  date_created : string;
+  ?date_sent : string option;
+  date_updated : string;
+  direction : direction;
+  from <ocaml name="from_number"> : string;
+  ?price : string option;
+  sid : string;
+  status : status;
+  to <ocaml name="to_number"> : string;
+  uri : string;
+}
+
+type page = {
+  page : int;
+  num_pages : int;
+  page_size : int;
+  total : int;
+  start : int;
+  end <ocaml name="page_end"> : int;
+  uri <ocaml name="page_uri"> : string;
+  first_page_uri : string;
+  ?previous_page_url : string option;
+  ?next_page_uri : string option;
+  last_page_uri : string;
+  sms_messages : t list
+}

@@ -1,0 +1,32 @@
+type t = {
+  sid : string;
+  account_sid : string;
+  friendly_name : string;
+  phone_number : string;
+  date_created : string;
+  date_updated : string;
+  uri : string;
+}
+
+type page = {
+  page : int;
+  num_pages : int;
+  page_size : int;
+  total : int;
+  start : int;
+  end <ocaml name="page_end"> : int;
+  uri <ocaml name="page_uri"> : string;
+  first_page_uri : string;
+  ?previous_page_url : string option;
+  ?next_page_uri : string option;
+  last_page_uri : string;
+  outgoing_caller_ids : t list
+}
+
+type post_result = {
+  account_sid : string;
+  phone_number : string;
+  friendly_name : string;
+  validation_code : int;
+} <ocaml field_prefix="post_">
+

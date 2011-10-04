@@ -1,0 +1,61 @@
+type status =
+  [ Queued <json name="queued">
+  | Ringing <json name="ringing">
+  | In_progress <json name="in-progress">
+  | Completed <json name="completed">
+  | Failed <json name="failed">
+  | Busy <json name="busy">
+  | No_answer <json name="no-answer">
+  ]
+
+type direction =
+  [ Inbound <json name="inbound">
+  | Outbound_api <json name="outbound-api">
+  | Outbound_dial <json name="outbound-dial">
+  ]
+
+type subresource_uris = {
+  ?notifications : string option;
+  ?recordings : string option;
+}
+
+type t = {
+  sid : string;
+  date_created : string;
+  date_updated : string;
+  ?parent_call_sid : string option;
+  account_sid : string;
+  to <ocaml name="to_number"> : string;
+  from <ocaml name="from_number"> : string;
+  ?formatted_to : string option;
+  ?formatted_from : string option;
+  ?phone_number_sid : string option;
+  status : status;
+  ?start_time : string option;
+  ?end_time : string option;
+  ?duration : string option;
+  ?price : string option;
+  direction : direction;
+  ?answered_by : string option;
+  api_version : string;
+  ?annotation : string option;
+  ?forwarded_from : string option;
+  ?caller_name : string option;
+  uri : string;
+  subresource_uris : subresource_uris;
+}
+
+type page = {
+  page : int;
+  num_pages : int;
+  page_size : int;
+  total : int;
+  start : int;
+  end <ocaml name="page_end"> : int;
+  uri <ocaml name="page_uri"> : string;
+  first_page_uri : string;
+  ?previous_page_url : string option;
+  ?next_page_uri : string option;
+  last_page_uri : string;
+  calls : t list
+}

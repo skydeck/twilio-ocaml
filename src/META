@@ -1,0 +1,6 @@
+name = "twilio"
+version = "0.1"
+description = "twilio implementation"
+requires = "netclient,ssl,equeue-ssl,atd,biniou,yojson,atdgen"
+archive(byte) = "twilio.cma"
+archive(native) = "twilio.cmxa"

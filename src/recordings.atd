@@ -1,0 +1,25 @@
+type t = {
+  account_sid : string;
+  api_version : string;
+  call_sid : string;
+  date_created : string;
+  date_updated : string;
+  duration : string;
+  sid : string;
+  uri : string;
+}
+
+type page = {
+  page : int;
+  num_pages : int;
+  page_size : int;
+  total : int;
+  start : int;
+  end <ocaml name="page_end"> : int;
+  uri <ocaml name="page_uri"> : string;
+  first_page_uri : string;
+  ?previous_page_url : string option;
+  ?next_page_uri : string option;
+  last_page_uri : string;
+  recordings : t list
+}
